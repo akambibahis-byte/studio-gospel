@@ -61,34 +61,47 @@
             font-weight: bold;
             margin-top: 15px;
             transition: background 0.3s;
+            border: none;
+            cursor: pointer;
         }
         .btn:hover {
             background: #1a2a6c;
         }
-        /* Styles de la section Contact et du Pied de page */
-        .contact-info {
-            list-style: none;
-            padding: 0;
+        .btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
         }
-        .contact-info li {
-            margin: 10px 0;
-            font-size: 1.1rem;
-        }
-        .contact-info a {
-            color: #b21f1f;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        footer {
+        
+        /* Zone d'importation et Studio */
+        .studio-box {
+            background: #f1f2f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px dashed #1a2a6c;
             text-align: center;
-            padding: 30px 20px;
-            background-color: #1a2a6c;
-            color: white;
-            margin-top: 40px;
-            font-size: 0.9rem;
+        }
+        .file-input {
+            display: none;
+        }
+        .file-label {
+            background: #fdbb2d;
+            color: #1a2a6c;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        audio {
+            width: 100%;
+            margin-top: 15px;
+        }
+        .status {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #b21f1f;
         }
     </style>
 </head>
@@ -97,36 +110,66 @@
     <header>
         <h1>Mon Studio Mobile</h1>
         <p>Enregistrez, mixez et partagez vos productions musicales directement depuis votre smartphone.</p>
-        <a href="#features" class="btn">Découvrir les fonctionnalités</a>
+        <a href="#studio" class="btn">Accéder au Studio</a>
     </header>
 
-    <div class="container" id="features">
-        <div class="grid">
-            <section>
-                <h2>Enregistrement HD</h2>
-                <p>Capturez votre voix ou vos instruments avec une clarté professionnelle en utilisant le micro de votre téléphone ou une carte son externe.</p>
-            </section>
+    <div class="container">
+        <!-- Section Studio d'Enregistrement simultané -->
+        <div class="grid" id="studio" style="margin-top: 40px;">
+            <section style="grid-column: 1 / -1;">
+                <h2>🎤 Studio d'Enregistrement simultané</h2>
+                <p>Introduisez votre propre beat instrumental depuis votre téléphone. Le site jouera le beat et enregistrera votre voix en même temps.</p>
+                
+                <div class="studio-box">
+                    <!-- Bouton d'introduction du beat -->
+                    <label for="beat-upload" class="file-label">🎵 Choisir un Beat (MP3/WAV)</label>
+                    <input type="file" id="beat-upload" class="file-input" accept="audio/*">
+                    <div id="file-name" style="font-size: 0.9rem; color: #7f8c8d;">Aucun fichier sélectionné</div>
+                    
+                    <!-- Lecteur masqué ou visible pour l'instrumentale -->
+                    <audio id="instrumental-player" controls style="display:none;"></audio>
+                </div>
 
-            <section>
-                <h2>Mixage Multi-pistes</h2>
-                <p>Superposez vos pistes audio, ajustez les volumes, ajoutez des effets (Reverb, Delay, EQ) et créez le morceau parfait.</p>
-            </section>
+                <!-- Commandes de l'enregistrement -->
+                <div style="text-align: center; margin-top: 25px;">
+                    <button class="btn" id="start-btn" onclick="lancerStudio()" disabled>▶️ Lancer le Beat & Enregistrer ma Voix</button>
+                    <button class="btn" id="stop-btn" onclick="arreterStudio()" style="background:#7f8c8d;" disabled>⏹️ Arrêter</button>
+                    
+                    <div id="status-studio" class="status">Veuillez d'abord introduire un beat instrumental.</div>
+                </div>
 
-            <section>
-                <h2>Banque de Sons</h2>
-                <p>Accédez à des centaines de boucles de batterie, de synthétiseurs et d'instruments virtuels inclus gratuitement pour lancer vos compos.</p>
+                <!-- Zone d'écoute du résultat final (Voix seule enregistrée) -->
+                <div id="result-box" style="display:none; margin-top: 30px; text-align: center;">
+                    <h3>🎧 Écouter votre enregistrement voix</h3>
+                    <audio id="voice-preview" controls></audio>
+                </div>
             </section>
         </div>
 
-        <!-- Section Créateur & Contact ajoutée ici -->
+        <!-- Section Présentation des fonctionnalités -->
+        <div class="grid">
+            <section>
+                <h2>Enregistrement HD</h2>
+                <p>Capturez votre voix ou vos instruments avec une clarté professionnelle en utilisant le micro de votre téléphone.</p>
+            </section>
+            <section>
+                <h2>Mixage Multi-pistes</h2>
+                <p>Superposez vos pistes audio, ajustez les volumes, ajoutez des effets et créez le morceau parfait.</p>
+            </section>
+            <section>
+                <h2>Banque de Sons</h2>
+                <p>Accédez à des centaines de boucles de batterie incluses gratuitement pour lancer vos compositions.</p>
+            </section>
+        </div>
+
+        <!-- Section Créateur & Contact -->
         <div class="grid" style="margin-top: 40px;">
             <section style="grid-column: 1 / -1;">
                 <h2>À propos du Créateur & Contact</h2>
-                <p>Ce site et ce projet de studio mobile ont été conçus et développés avec passion.</p>
-                <ul class="contact-info">
+                <ul style="list-style: none; padding: 0;">
                     <li><strong>Créateur :</strong> Isaac Femi Oloumide</li>
-                    <li><strong>Email :</strong> <a href="mailto:akambibahis@gmail.com">akambibahis@gmail.com</a></li>
-                    <li><strong>Téléphone :</strong> <a href="tel:+2290155503185">+229 0155503185</a></li>
+                    <li><strong>Email :</strong> <a href="mailto:akambibahis@gmail.com" style="color:#b21f1f;">akambibahis@gmail.com</a></li>
+                    <li><strong>Téléphone :</strong> <a href="tel:+2290155503185" style="color:#b21f1f;">+229 0155503185</a></li>
                 </ul>
             </section>
         </div>
@@ -136,6 +179,72 @@
         <p>&copy; 2026 Mon Studio Mobile. Conçu par Isaac Femi Oloumide. Tous droits réservés.</p>
     </footer>
 
-</body>
-</html>
->
+    <!-- Logique JavaScript pour gérer l'audio simultané -->
+    <script>
+        const beatUpload = document.getElementById('beat-upload');
+        const fileName = document.getElementById('file-name');
+        const instPlayer = document.getElementById('instrumental-player');
+        const startBtn = document.getElementById('start-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const statusStudio = document.getElementById('status-studio');
+        const voicePreview = document.getElementById('voice-preview');
+        const resultBox = document.getElementById('result-box');
+
+        let mediaRecorder;
+        let audioChunks = [];
+
+        // Événement quand l'utilisateur choisit un fichier Beat
+        beatUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                fileName.innerText = "Beat chargé : " + file.name;
+                const fileURL = URL.createObjectURL(file);
+                instPlayer.src = fileURL;
+                instPlayer.style.display = "block"; // Affiche le lecteur pour pouvoir gérer le volume du beat
+                startBtn.disabled = false;
+                statusStudio.style.color = "green";
+                statusStudio.innerText = "Prêt ! Cliquez sur le bouton pour chanter sur votre beat.";
+            }
+        });
+
+        // Fonction pour lancer le beat et le micro en même temps
+        function lancerStudio() {
+            statusStudio.style.color = "#1a2a6c";
+            statusStudio.innerText = "Configuration du micro...";
+            audioChunks = [];
+
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(function(stream) {
+                    // Initialise l'enregistreur de voix
+                    mediaRecorder = new MediaRecorder(stream);
+                    
+                    mediaRecorder.ondataavailable = function(e) {
+                        audioChunks.push(e.data);
+                    };
+
+                    mediaRecorder.onstop = function() {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
+                        const audioUrl = URL.createObjectURL(audioBlob);
+                        voicePreview.src = audioUrl;
+                        resultBox.style.display = "block";
+                    };
+
+                    // DÉMARRAGE SIMULTANÉ
+                    mediaRecorder.start();
+                    instPlayer.currentTime = 0; // Remet le beat au début
+                    instPlayer.play();
+
+                    // Gestion des boutons
+                    startBtn.disabled = true;
+                    stopBtn.disabled = false;
+                    statusStudio.style.color = "red";
+                    statusStudio.innerText = "🔴 ENREGISTREMENT EN COURS : Le beat joue, chantez maintenant !";
+                })
+                .catch(function(err) {
+                    statusStudio.style.color = "#b21f1f";
+                    statusStudio.innerText = "Erreur micro : " + err.message;
+                });
+            } else {
+                statusStudio.innerText = "Votre téléphone ne permet pas l'enregistrement audio direct via navigateur.";
+            }
