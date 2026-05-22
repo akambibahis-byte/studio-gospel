@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Studio Mobile - Créez votre musique sur Smartphone</title>
+    <title>Mon Studio Mobile - Créez votre musique sur smartphone</title>
     <style>
         /* Styles Généraux */
         body {
@@ -15,18 +15,18 @@
             line-height: 1.6;
         }
         header {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             color: #fff;
             padding: 80px 20px;
             text-align: center;
         }
         header h1 {
             margin: 0;
-            font-size: 2.8em;
+            font-size: 2.8rem;
             font-weight: 700;
         }
         header p {
-            font-size: 1.2em;
+            font-size: 1.2rem;
             margin-top: 10px;
             opacity: 0.9;
         }
@@ -45,114 +45,97 @@
             background: #fff;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         h2 {
             color: #1a2a6c;
-            border-bottom: 3px solid #f8f9fa;
-            padding-bottom: 10px;
             margin-top: 0;
         }
-        h3 {
-            color: #b21f1f;
-        }
-        /* Cartes d'astuces */
-        .card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #b21f1f;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-        /* Formulaire de Contact */
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        input, textarea, button {
-            margin: 10px 0;
-            padding: 14px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1em;
-        }
-        button {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+        .btn {
+            display: inline-block;
+            background: #b21f1f;
             color: white;
-            border: none;
-            cursor: pointer;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
             font-weight: bold;
-            font-size: 1.1em;
-            transition: transform 0.2s;
+            margin-top: 15px;
+            transition: background 0.3s;
         }
-        button:hover {
-            transform: translateY(-2px);
+        .btn:hover {
+            background: #1a2a6c;
+        }
+        /* Styles de la section Contact et du Pied de page */
+        .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+        .contact-info li {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        .contact-info a {
+            color: #b21f1f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
         }
         footer {
             text-align: center;
-            padding: 30px;
-            background-color: #111;
-            color: #888;
-            font-size: 0.9em;
+            padding: 30px 20px;
+            background-color: #1a2a6c;
+            color: white;
+            margin-top: 40px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Votre Studio Pro dans la Poche</h1>
-        <p>Enregistrez, mixez et partagez votre musique Gospel directement depuis votre smartphone.</p>
+        <h1>Mon Studio Mobile</h1>
+        <p>Enregistrez, mixez et partagez vos productions musicales directement depuis votre smartphone.</p>
+        <a href="#features" class="btn">Découvrir les fonctionnalités</a>
     </header>
 
-    <div class="container">
-
-        <!-- Section Introduction -->
-        <section id="vision">
-            <h2>Le projet</h2>
-            <p>Pas besoin de dépenser des millions dans un studio professionnel pour faire entendre votre voix. Que vous soyez chantre, choriste ou musicien de gospel, ce site est conçu pour vous donner toutes les clés, les techniques et les outils pour transformer votre simple téléphone en un puissant studio d'enregistrement de haute qualité.</p>
-        </section>
-
-        <!-- Section Les Piliers du Studio Mobile -->
-        <h2>Les 3 Étapes Essentielles</h2>
+    <div class="container" id="features">
         <div class="grid">
-            <div class="card">
-                <h3>1. Les Bonnes Applications</h3>
-                <p>Découvrez les meilleures applications gratuites et professionnelles (comme BandLab ou GarageBand) pour enregistrer plusieurs pistes, ajouter des effets sur votre voix et harmoniser vos chants de louange.</p>
-            </div>
-            <div class="card">
-                <h3>2. Traitement Acoustique "Maison"</h3>
-                <p>Apprenez comment éliminer l'écho de votre chambre sans dépenser un sou. Des astuces simples avec ce que vous avez sous la main pour obtenir un son pur et net.</p>
-            </div>
-            <div class="card">
-                <h3>3. Matériel Abordable</h3>
-                <p>Sélection de petits accessoires indispensables (micros économiques, écouteurs adaptés, filtres de fortune) pour booster instantanément la qualité sonore de votre smartphone.</p>
-            </div>
+            <section>
+                <h2>Enregistrement HD</h2>
+                <p>Capturez votre voix ou vos instruments avec une clarté professionnelle en utilisant le micro de votre téléphone ou une carte son externe.</p>
+            </section>
+
+            <section>
+                <h2>Mixage Multi-pistes</h2>
+                <p>Superposez vos pistes audio, ajustez les volumes, ajoutez des effets (Reverb, Delay, EQ) et créez le morceau parfait.</p>
+            </section>
+
+            <section>
+                <h2>Banque de Sons</h2>
+                <p>Accédez à des centaines de boucles de batterie, de synthétiseurs et d'instruments virtuels inclus gratuitement pour lancer vos compos.</p>
+            </section>
         </div>
 
-        <!-- Section Tutoriels / À venir -->
-        <section id="tutoriels" style="margin-top: 30px;">
-            <h2>Formations & Accompagnement</h2>
-            <p>Très bientôt, des guides étape par étape et des vidéos de démonstration seront disponibles pour vous accompagner, de la première prise de voix jusqu'au mixage final de votre projet gospel.</p>
-        </section>
-
-        <!-- Section Contact / Communauté -->
-        <section id="contact">
-            <h2>Rejoignez le mouvement</h2>
-            <p>Vous avez un projet musical ou besoin d'un conseil pour configurer votre studio sur téléphone ? Laissez un message pour recevoir de l'aide ou proposer une collaboration.</p>
-            <form action="#" method="POST">
-                <input type="text" name="name" placeholder="Votre Nom" required>
-                <input type="email" name="email" placeholder="Votre Adresse Email" required>
-                <textarea name="message" rows="5" placeholder="Parlez-moi de votre projet musical ou de vos questions..." required></textarea>
-                <button type="submit">Envoyer mon message</button>
-            </form>
-        </section>
-
+        <!-- Section Créateur & Contact ajoutée ici -->
+        <div class="grid" style="margin-top: 40px;">
+            <section style="grid-column: 1 / -1;">
+                <h2>À propos du Créateur & Contact</h2>
+                <p>Ce site et ce projet de studio mobile ont été conçus et développés avec passion.</p>
+                <ul class="contact-info">
+                    <li><strong>Créateur :</strong> Isaac Femi Oloumide</li>
+                    <li><strong>Email :</strong> <a href="mailto:akambibahis@gmail.com">akambibahis@gmail.com</a></li>
+                    <li><strong>Téléphone :</strong> <a href="tel:+2290155503185">+229 0155503185</a></li>
+                </ul>
+            </section>
+        </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 - Guide Studio Gospel Mobile - Tous droits réservés.</p>
+        <p>&copy; 2026 Mon Studio Mobile. Conçu par Isaac Femi Oloumide. Tous droits réservés.</p>
     </footer>
 
 </body>
 </html>
+>
