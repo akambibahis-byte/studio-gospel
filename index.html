@@ -1,252 +1,545 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isaac Femi Studio Mobile - Enregistrez votre Single à la Maison</title>
-    <style>
-        /* Styles Graphiques Pro */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #0b0f19;
-            color: #f3f4f6;
-            line-height: 1.6;
-        }
-        header {
-            background: linear-gradient(135deg, #1e1b4b, #581c87, #0284c7);
-            color: #fff;
-            padding: 70px 20px;
-            text-align: center;
-            border-bottom: 3px solid #38bdf8;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.6rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        header p {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            color: #e0e7ff;
-        }
-        .container {
-            max-width: 1000px;
-            margin: -30px auto 40px auto;
-            padding: 0 20px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        section {
-            background: #111827;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            border: 1px solid #1f2937;
-        }
-        h2 {
-            color: #38bdf8;
-            margin-top: 0;
-            font-size: 1.5rem;
-        }
-        .btn {
-            display: inline-block;
-            background: #0284c7;
-            color: white;
-            padding: 14px 28px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.4);
-        }
-        .btn:hover {
-            background: #0369a1;
-            transform: translateY(-2px);
-        }
-        .studio-box {
-            background: #1f2937;
-            padding: 25px;
-            border-radius: 12px;
-            margin-top: 20px;
-            border: 2px dashed #38bdf8;
-            text-align: center;
-        }
-        .file-upload-btn {
-            background: #f59e0b;
-            color: #1e1b4b;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            width: 85%;
-        }
-        audio {
-            width: 100%;
-            margin-top: 15px;
-        }
-        .status {
-            margin-top: 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        .slider-container {
-            margin-top: 15px;
-            text-align: left;
-            background: #111827;
-            padding: 10px 15px;
-            border-radius: 8px;
-        }
-        .slider-container label {
-            display: block;
-            font-size: 0.9rem;
-            color: #9ca3af;
-            margin-bottom: 5px;
-        }
-        input[type="range"] {
-            width: 100%;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mon Studio Mobile</title>
+
+<style>
+
+body{
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+    margin:0;
+    padding:0;
+    background:#0b0f19;
+    color:white;
+}
+
+header{
+    background:linear-gradient(135deg,#1e1b4b,#581c87,#0284c7);
+    padding:70px 20px;
+    text-align:center;
+    border-bottom:3px solid #38bdf8;
+}
+
+header h1{
+    margin:0;
+    font-size:2.7rem;
+    font-weight:800;
+}
+
+header p{
+    color:#dbeafe;
+    font-size:1.1rem;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+section{
+    background:#111827;
+    padding:25px;
+    border-radius:18px;
+    border:1px solid #1f2937;
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+h2{
+    color:#38bdf8;
+}
+
+.studio-box{
+    background:#1f2937;
+    border:2px dashed #38bdf8;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+}
+
+.btn{
+    background:#0284c7;
+    color:white;
+    border:none;
+    padding:14px 28px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:10px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.file-upload-btn{
+    width:90%;
+    background:#f59e0b;
+    color:#111827;
+    padding:12px;
+    border-radius:25px;
+    border:none;
+    font-weight:bold;
+}
+
+audio{
+    width:100%;
+    margin-top:15px;
+}
+
+.slider-container{
+    margin-top:15px;
+    background:#111827;
+    padding:10px;
+    border-radius:10px;
+}
+
+.slider-container label{
+    display:block;
+    margin-bottom:5px;
+    color:#9ca3af;
+}
+
+input[type="range"]{
+    width:100%;
+}
+
+.status{
+    margin-top:20px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+#result-box{
+    display:none;
+    margin-top:30px;
+    background:#1e1b4b;
+    padding:20px;
+    border-radius:15px;
+    border:1px solid #581c87;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#6b7280;
+}
+
+.download-btn{
+    background:#10b981;
+    display:inline-block;
+    margin-top:15px;
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <header>
-        <h1>Mon Studio Mobile</h1>
-        <p>Enregistrez, mixez et sortez votre chanson pro directement depuis chez vous.</p>
-    </header>
+<header>
+    <h1>MON STUDIO MOBILE</h1>
+    <p>Enregistrez votre chanson directement depuis votre téléphone.</p>
+</header>
 
-    <div class="container">
-        <!-- CABINE D'ENREGISTREMENT PROFESSIONNELLE -->
-        <div class="grid" id="studio" style="margin-top: 40px;">
-            <section style="grid-column: 1 / -1; border: 1px solid #38bdf8;">
-                <h2>🎙️ Votre Cabine de Mixage Virtuelle</h2>
-                <p>Pas besoin de bouger de chez vous. Importez votre instru, mettez vos écouteurs et chantez avec des effets vocaux de studio.</p>
-                
-                <div class="studio-box">
-                    <input type="file" id="beat-upload" class="file-upload-btn" accept="audio/*" onchange="chargerInstru(this)">
-                    <audio id="instrumental-player" controls style="display:none;"></audio>
-                    
-                    <!-- RÉGLAGE DU VOLUME DU BEAT DANS LE MIX -->
-                    <div class="slider-container" id="volume-box" style="display:none;">
-                        <label for="beat-volume">🎚️ Volume de la Musique (Ajuster pour ne pas couvrir la voix) :</label>
-                        <input type="range" id="beat-volume" min="0" max="1" step="0.05" value="0.5" oninput="ajusterVolumeBeat(this.value)">
-                    </div>
-                </div>
+<div class="container">
 
-                <div style="text-align: center; margin-top: 25px;">
-                    <button class="btn" id="start-btn" onclick="lancerSession()" style="background:#10b981;">▶️ Lancer le Studio & Chanter</button>
-                    <button class="btn" id="stop-btn" onclick="arreterSession()" style="background:#ef4444;">⏹️ Finaliser le Morceau</button>
-                    
-                    <div id="status-studio" class="status" style="color: #f59e0b;">En attente de votre beat instrumental...</div>
-                </div>
+<div class="grid">
 
-                <!-- SORTIE FINALE DU DISQUE PRO -->
-                <div id="result-box" style="display:none; margin-top: 35px; text-align: center; padding: 20px; background: #1e1b4b; border-radius: 12px; border: 1px solid #581c87;">
-                    <h3>💿 Écouter le Master Final (Voix + Musique)</h3>
-                    <p style="font-size:0.9rem; color:#a5b4fc;">Votre voix a été automatiquement égalisée avec de la réverbération de studio.</p>
-                    <audio id="voice-preview" controls></audio>
-                </div>
-            </section>
-        </div>
+<section style="grid-column:1/-1;">
 
-        <!-- ARGUMENTS MARKETING DU SITE -->
-        <div class="grid">
-            <section>
-                <h2>1. Enregistrement HD</h2>
-                <p>Le système isole les bruits de fond de votre pièce pour capter une voix nette et claire.</p>
-            </section>
-            <section>
-                <h2>2. Effets Acoustiques</h2>
-                <p>Application instantanée d'un écho de profondeur simulant l'acoustique d'un vrai studio d'enregistrement.</p>
-            </section>
-            <section>
-                <h2>3. Mixage Automatique</h2>
-                <p>Notre algorithme fusionne la voix et l'instrument pour un rendu équilibré, prêt à être partagé.</p>
-            </section>
-        </div>
+<h2>🎙️ Cabine de Mixage Virtuelle</h2>
 
-        <!-- INFOS CRÉATEUR -->
-        <div class="grid" style="margin-top: 40px;">
-            <section style="grid-column: 1 / -1; background: #111827;">
-                <h2>Ingénieur du Son & Concepteur</h2>
-                <p>Besoin d'un mastering personnalisé ou d'une aide ? Contactez le studio :</p>
-                <ul style="list-style: none; padding: 0; font-size: 1.1rem;">
-                    <li>👤 <strong>Producteur :</strong> Isaac Femi Oloumide</li>
-                    <li>📧 <strong>E-mail :</strong> <a href="mailto:akambibahis@gmail.com" style="color:#38bdf8; text-decoration:none;">akambibahis@gmail.com</a></li>
-                    <li>📞 <strong>Téléphone :</strong> <a href="tel:+2290155503185" style="color:#38bdf8; text-decoration:none;">+229 0155503185</a></li>
-                </ul>
-            </section>
-        </div>
-    </div>
+<p>
+Importez votre instrumental, chantez avec vos écouteurs
+et obtenez votre morceau final.
+</p>
 
-    <footer>
-        <p style="text-align: center; color: #6b7280; padding: 20px; font-size: 0.9rem;">&copy; 2026 Mon Studio Mobile. Conçu par Isaac Femi Oloumide. Propulsez votre talent.</p>
-    </footer>
+<div class="studio-box">
 
-    <script>
-        const instPlayer = document.getElementById('instrumental-player');
-        const statusStudio = document.getElementById('status-studio');
-        const voicePreview = document.getElementById('voice-preview');
-        const resultBox = document.getElementById('result-box');
-        const volumeBox = document.getElementById('volume-box');
+<p style="color:#9ca3af;">
+Étape 1 : Chargez votre instrumental
+</p>
 
-        let mediaRecorder;
-        let audioChunks = [];
-        let audioCtx;
-        let mediaStreamDestination;
-        let beatSource;
-        let beatGainNode;
+<input
+type="file"
+id="beat-upload"
+class="file-upload-btn"
+accept="audio/*"
+onchange="chargerInstru(this)"
+>
 
-        function chargerInstru(element) {
-            const file = element.files[0];
-            if (file) {
-                const fileURL = URL.createObjectURL(file);
-                instPlayer.src = fileURL;
-                instPlayer.style.display = "block";
-                volumeBox.style.display = "block";
-                statusStudio.style.color = "#10b981";
-                statusStudio.innerText = "✓ Musique chargée ! Mettez vos écouteurs et cliquez sur 'Lancer le Studio'.";
+<audio id="instrumental-player" controls style="display:none;"></audio>
+
+<div class="slider-container" id="volume-box" style="display:none;">
+
+<label>
+🎚️ Volume du Beat
+</label>
+
+<input
+type="range"
+id="beat-volume"
+min="0"
+max="1"
+step="0.05"
+value="0.5"
+oninput="ajusterVolumeBeat(this.value)"
+>
+
+</div>
+
+</div>
+
+<div style="text-align:center;margin-top:25px;">
+
+<p style="color:#9ca3af;">
+Étape 2 : Lancez l'enregistrement
+</p>
+
+<button
+class="btn"
+id="start-btn"
+onclick="lancerSession()"
+style="background:#10b981;"
+>
+▶️ Lancer le Beat & Enregistrer
+</button>
+
+<button
+class="btn"
+id="stop-btn"
+onclick="arreterSession()"
+style="background:#ef4444;display:none;"
+>
+⏹️ Finaliser le Morceau
+</button>
+
+<div id="status-studio" class="status" style="color:#f59e0b;">
+Veuillez charger un instrumental.
+</div>
+
+</div>
+
+<div id="result-box">
+
+<h3>💿 Votre Morceau Final</h3>
+
+<p style="color:#cbd5e1;">
+Écoutez ou téléchargez votre chanson.
+</p>
+
+<audio id="voice-preview" controls></audio>
+
+<br>
+
+<a id="download-link" class="btn download-btn" download="mon-morceau.webm">
+⬇️ Télécharger le morceau
+</a>
+
+</div>
+
+</section>
+
+</div>
+
+<div class="grid" style="margin-top:30px;">
+
+<section>
+<h2>1. Enregistrement HD</h2>
+<p>
+Votre voix est captée clairement avec réduction des bruits.
+</p>
+</section>
+
+<section>
+<h2>2. Effets Studio</h2>
+<p>
+Compression et équilibrage automatique du son.
+</p>
+</section>
+
+<section>
+<h2>3. Mixage Auto</h2>
+<p>
+Fusion automatique entre la voix et l'instrumental.
+</p>
+</section>
+
+</div>
+
+<div class="grid" style="margin-top:40px;">
+
+<section style="grid-column:1/-1;">
+
+<h2>Contact</h2>
+
+<ul style="list-style:none;padding:0;">
+
+<li>
+👤 Isaac Femi Oloumide
+</li>
+
+<li>
+📧 akambibahis@gmail.com
+</li>
+
+<li>
+📞 +229 0155503185
+</li>
+
+</ul>
+
+</section>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Mon Studio Mobile
+</footer>
+
+<script>
+
+const instPlayer =
+document.getElementById('instrumental-player');
+
+const statusStudio =
+document.getElementById('status-studio');
+
+const voicePreview =
+document.getElementById('voice-preview');
+
+const resultBox =
+document.getElementById('result-box');
+
+const volumeBox =
+document.getElementById('volume-box');
+
+const startBtn =
+document.getElementById('start-btn');
+
+const stopBtn =
+document.getElementById('stop-btn');
+
+const downloadLink =
+document.getElementById('download-link');
+
+let mediaRecorder;
+let audioChunks = [];
+let audioCtx;
+let beatGainNode;
+let micStreamGlobal;
+
+function chargerInstru(element){
+
+    const file = element.files[0];
+
+    if(file){
+
+        const fileURL = URL.createObjectURL(file);
+
+        instPlayer.src = fileURL;
+
+        instPlayer.style.display = "block";
+
+        volumeBox.style.display = "block";
+
+        statusStudio.style.color = "#10b981";
+
+        statusStudio.innerText =
+        "✅ Instrumental chargé avec succès.";
+
+    }
+
+}
+
+function ajusterVolumeBeat(valeur){
+
+    instPlayer.volume = valeur;
+
+    if(beatGainNode){
+        beatGainNode.gain.value = valeur;
+    }
+
+}
+
+async function lancerSession(){
+
+    if(!instPlayer.src){
+
+        statusStudio.style.color = "#ef4444";
+
+        statusStudio.innerText =
+        "⚠️ Chargez d'abord un instrumental.";
+
+        return;
+    }
+
+    try{
+
+        audioChunks = [];
+
+        startBtn.style.display = "none";
+
+        stopBtn.style.display = "inline-block";
+
+        statusStudio.style.color = "#38bdf8";
+
+        statusStudio.innerText =
+        "🎙️ Enregistrement en cours...";
+
+        audioCtx =
+        new(window.AudioContext || window.webkitAudioContext)();
+
+        micStreamGlobal =
+        await navigator.mediaDevices.getUserMedia({
+            audio:true
+        });
+
+        const micSource =
+        audioCtx.createMediaStreamSource(micStreamGlobal);
+
+        const instrumentalSource =
+        audioCtx.createMediaElementSource(instPlayer);
+
+        beatGainNode = audioCtx.createGain();
+
+        beatGainNode.gain.value = 0.5;
+
+        const compressor =
+        audioCtx.createDynamicsCompressor();
+
+        compressor.threshold.setValueAtTime(
+            -20,
+            audioCtx.currentTime
+        );
+
+        compressor.knee.setValueAtTime(
+            20,
+            audioCtx.currentTime
+        );
+
+        compressor.ratio.setValueAtTime(
+            4,
+            audioCtx.currentTime
+        );
+
+        const destination =
+        audioCtx.createMediaStreamDestination();
+
+        micSource.connect(compressor);
+
+        compressor.connect(destination);
+
+        instrumentalSource.connect(beatGainNode);
+
+        beatGainNode.connect(destination);
+
+        beatGainNode.connect(audioCtx.destination);
+
+        mediaRecorder =
+        new MediaRecorder(destination.stream);
+
+        mediaRecorder.ondataavailable = e => {
+
+            if(e.data.size > 0){
+
+                audioChunks.push(e.data);
+
             }
-        }
 
-        function ajusterVolumeBeat(valeur) {
-            if (beatGainNode) {
-                beatGainNode.gain.value = valeur;
-            }
-        }
+        };
 
-        function lancerSession() {
-            if (!instPlayer.src) {
-                statusStudio.style.color = "#ef4444";
-                statusStudio.innerText = "⚠️ Veuillez insérer une musique de fond d'abord.";
-                return;
-            }
+        mediaRecorder.onstop = () => {
 
-            audioChunks = [];
-            statusStudio.style.color = "#38bdf8";
-            statusStudio.innerText = "Activation des compresseurs et filtres vocaux...";
+            const audioBlob =
+            new Blob(audioChunks,{
+                type:'audio/webm'
+            });
 
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            
-            navigator.mediaDevices.getUserMedia({ audio: true })
-            .then(function(micStream) {
-                const micSource = audioCtx.createMediaStreamSource(micStream);
-                
-                // 1. COMPRESSEUR DE STUDIO (Pour lisser la voix et éviter la saturation)
-                const compressor = audioCtx.createDynamicsCompressor();
-                compressor.threshold.value = -24;
-                compressor.knee.value = 30;
-                compressor.ratio.value = 12;
-                compressor.attack.value = 0.003;
-                compressor.release.value = 0.25;
+            const audioURL =
+            URL.createObjectURL(audioBlob);
+
+            voicePreview.src = audioURL;
+
+            downloadLink.href = audioURL;
+
+            resultBox.style.display = "block";
+
+            statusStudio.style.color = "#10b981";
+
+            statusStudio.innerText =
+            "✅ Morceau enregistré avec succès.";
+
+            micStreamGlobal
+            .getTracks()
+            .forEach(track => track.stop());
+
+            startBtn.style.display = "inline-block";
+
+            stopBtn.style.display = "none";
+
+        };
+
+        instPlayer.currentTime = 0;
+
+        await instPlayer.play();
+
+        mediaRecorder.start();
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+        statusStudio.style.color = "#ef4444";
+
+        statusStudio.innerText =
+        "❌ Autorisez le microphone dans Chrome.";
+
+        startBtn.style.display = "inline-block";
+
+        stopBtn.style.display = "none";
+
+    }
+
+}
+
+function arreterSession(){
+
+    if(mediaRecorder &&
+       mediaRecorder.state !== "inactive"){
+
+        mediaRecorder.stop();
+
+    }
+
+    instPlayer.pause();
+
+    statusStudio.style.color = "#f59e0b";
+
+    statusStudio.innerText =
+    "⏹️ Finalisation du morceau...";
+
+}
+
+</script>
+
+</body>
+</html>
+
+  
+
