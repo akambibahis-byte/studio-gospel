@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Studio Mobile - Version Pro</title>
+
+<style>
+body{
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+    margin:0;
+    padding:0;
+    background:#0b0f19;
+    color:white;
+}
+
+header{
+    background:linear-gradient(135deg,#1e1b4b,#581c87,#0284c7);
+    padding:70px 20px;
+    text-align:center;
+    border-bottom:3px solid #38bdf8;
+}
+
+header h1{
+    margin:0;
+    font-size:2.7rem;
+    font-weight:800;
+}
+
+header p{
+    color:#dbeafe;
+    font-size:1.1rem;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+section{
+    background:#111827;
+    padding:25px;
+    border-radius:18px;
+    border:1px solid #1f2937;
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+h2{
+    color:#38bdf8;
+}
+
+.studio-box{
+    background:#1f2937;
+    border:2px dashed #38bdf8;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+}
+
+.btn{
+    background:#0284c7;
+    color:white;
+    border:none;
+    padding:14px 28px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:10px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn:disabled{
+    opacity:0.5;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.file-upload-btn{
+    width:90%;
+    background:#f59e0b;
+    color:#111827;
+    padding:12px;
+    border-radius:25px;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.file-upload-btn:hover{
+    background:#ffb347;
+    transform:translateY(-1px);
+}
+
+audio{
+    width:100%;
+    margin-top:15px;
+}
+
+.slider-container{
+    margin-top:15px;
+    background:#111827;
+    padding:10px;
+    border-radius:10px;
+}
+
+.slider-container label{
+    display:block;
+    margin-bottom:5px;
+    color:#9ca3af;
+}
+
+input[type="range"]{
+    width:100%;
+    cursor:pointer;
+}
+
+.status{
+    margin-top:20px;
+    font-weight:bold;
+    font-size:1.05rem;
+    padding:10px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.status-error{
+    background:#450a0a;
+    color:#ef4444;
+}
+
+.status-success{
+    background:#064e3b;
+    color:#10b981;
+}
+
+.status-info{
+    background:#1e3a5f;
+    color:#38bdf8;
+}
+
+.status-warning{
+    background:#451a03;
+    color:#f59e0b;
+}
+
+#result-box{
+    display:none;
+    margin-top:30px;
+    background:#1e1b4b;
+    padding:20px;
+    border-radius:15px;
+    border:1px solid #581c87;
+    animation:fadeIn 0.5s;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#6b7280;
+}
+
+.download-btn{
+    background:#10b981;
+    display:inline-block;
+    margin-top:15px;
+    text-decoration:none;
+}
+
+.download-btn:hover{
+    background:#059669;
+}
+
+.countdown{
+    font-size:3rem;
+    font-weight:bold;
+    color:#38bdf8;
+    text-align:center;
+    margin:20px;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:0.5;}
+}
+
+.volume-meter{
+    width:100%;
+    height:30px;
+    background:#1f2937;
+    border-radius:15px;
+    overflow:hidden;
+    margin-top:15px;
+}
+
+.volume-meter-fill{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#10b981,#38bdf8);
+    transition:width 0.05s;
+    border-radius:15px;
+}
+
+.badge{
+    display:inline-block;
+    padding:4px 12px;
+    border-radius:12px;
+    font-size:0.8rem;
+    margin-left:10px;
+}
+
+.badge-pro{
+    background:#10b981;
+    color:white;
+}
+
+.reset-btn{
+    background:#6b7280;
+    margin-left:10px;
+}
+
+.reset-btn:hover{
+    background:#4b5563;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>MON STUDIO MOBILE <span class="badge badge-pro">PRO</span></h1>
+    <p>Enregistrez votre chanson directement depuis votre téléphone</p>
+</header>
+
+<div class="container">
+
+<div class="grid">
+
+<section style="grid-column:1/-1;">
+
+<h2>🎙️ Cabine de Mixage Virtuelle</h2>
+
+<p>
+Importez votre instrumental, chantez avec vos écouteurs
+et obtenez votre morceau final en qualité studio.
+</p>
+
+<div class="studio-box">
+
+<p style="color:#9ca3af;">
+📀 Étape 1 : Chargez votre instrumental (max 50MB)
+</p>
+
+<input
+type="file"
+id="beat-upload"
+class="file-upload-btn"
+accept="audio/*"
+>
+
+<audio id="instrumental-player" controls style="display:none;"></audio>
+
+<div class="slider-container" id="volume-box" style="display:none;">
+
+<label>
+🎚️ Volume du Beat
+</label>
+
+<input
+type="range"
+id="beat-volume"
+min="0"
+max="1"
+step="0.01"
+value="0.7"
+>
+
+</div>
+
+<div class="volume-meter" id="volume-meter" style="display:none;">
+    <div class="volume-meter-fill" id="volume-fill"></div>
+</div>
+
+</div>
+
+<div style="text-align:center;margin-top:25px;">
+
+<p style="color:#9ca3af;">
+🎤 Étape 2 : Lancez l'enregistrement
+</p>
+
+<button
+class="btn"
+id="start-btn"
+style="background:#10b981;"
+>
+▶️ Lancer l'enregistrement
+</button>
+
+<button
+class="btn"
+id="stop-btn"
+style="background:#ef4444;display:none;"
+>
+⏹️ Finaliser le morceau
+</button>
+
+<button
+class="btn reset-btn"
+id="reset-btn"
+style="display:none;"
+>
+🔄 Nouvelle session
+</button>
+
+<div id="countdown-box" style="display:none;"></div>
+
+<div id="status-studio" class="status status-warning">
+💿 Veuillez charger un instrumental (MP3, WAV, OGG)
+</div>
+
+</div>
+
+<div id="result-box">
+
+<h3>💿 Votre Morceau Final</h3>
+
+<p style="color:#cbd5e1;">
+Écoutez ou téléchargez votre chef-d'œuvre.
+</p>
+
+<audio id="voice-preview" controls></audio>
+
+<br>
+
+<a id="download-link" class="btn download-btn" download="mon-morceau.webm">
+⬇️ Télécharger le morceau (WEBM)
+</a>
+
+<button id="reset-after-save" class="btn reset-btn" style="margin-top:15px;">
+🎵 Enregistrer un nouveau morceau
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+<div class="grid" style="margin-top:30px;">
+
+<section>
+<h2>1. Enregistrement HD</h2>
+<p>
+Votre voix est captée clairement avec compression automatique et réduction des bruits de fond.
+</p>
+</section>
+
+<section>
+<h2>2. Effets Studio</h2>
+<p>
+Compression dynamique, égalisation et équilibrage automatique du son pour un rendu professionnel.
+</p>
+</section>
+
+<section>
+<h2>3. Mixage Auto</h2>
+<p>
+Fusion parfaite entre votre voix et l'instrumental avec ajustement en temps réel.
+</p>
+</section>
+
+</div>
+
+<div class="grid" style="margin-top:40px;">
+
+<section style="grid-column:1/-1;">
+
+<h2>📞 Contact & Support</h2>
+
+<ul style="list-style:none;padding:0;">
+<li>👤 Isaac Femi Oloumide</li>
+<li>📧 akambibahis@gmail.com</li>
+<li>📞 +229 0155503185</li>
+</ul>
+
+</section>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Mon Studio Mobile - Version Professionnelle
+</footer>
+
+<script>
+
+// Éléments DOM
+const beatUpload = document.getElementById('beat-upload');
+const instPlayer = document.getElementById('instrumental-player');
+const statusStudio = document.getElementById('status-studio');
+const voicePreview = document.getElementById('voice-preview');
+const resultBox = document.getElementById('result-box');
+const volumeBox = document.getElementById('volume-box');
+const volumeSlider = document.getElementById('beat-volume');
+const startBtn = document.getElementById('start-btn');
+const stopBtn = document.getElementById('stop-btn');
+const resetBtn = document.getElementById('reset-btn');
+const resetAfterSave = document.getElementById('reset-after-save');
+const downloadLink = document.getElementById('download-link');
+const volumeMeter = document.getElementById('volume-meter');
+const volumeFill = document.getElementById('volume-fill');
+const countdownBox = document.getElementById('countdown-box');
+
+// Variables globales
+let mediaRecorder = null;
+let audioChunks = [];
+let audioCtx = null;
+let beatGainNode = null;
+let micStream = null;
+let isRecording = false;
+let currentInstrumentalFile = null;
+let animationId = null;
+let analyser = null;
+
+// Taille maximale du fichier (50MB)
+const MAX_FILE_SIZE = 50 * 1024 * 1024;
+
+// Fonction pour mettre à jour le statut
+function updateStatus(message, type){
+    statusStudio.innerText = message;
+    statusStudio.classList.remove('status-error', 'status-success', 'status-info', 'status-warning');
+    
+    switch(type){
+        case 'error':
+            statusStudio.classList.add('status-error');
+            break;
+        case 'success':
+            statusStudio.classList.add('status-success');
+            break;
+        case 'info':
+            statusStudio.classList.add('status-info');
+            break;
+        default:
+            statusStudio.classList.add('status-warning');
+    }
+}
+
+// Chargement de l'instrumental
+beatUpload.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    
+    if(!file){
+        return;
+    }
+    
+    // Vérification taille
+    if(file.size > MAX_FILE_SIZE){
+        updateStatus('❌ Fichier trop volumineux (max 50MB)', 'error');
+        beatUpload.value = '';
+        return;
+    }
+    
+    // Vérification type
+    if(!file.type.includes('audio')){
+        updateStatus('❌ Veuillez charger un fichier audio', 'error');
+        beatUpload.value = '';
+        return;
+    }
+    
+    currentInstrumentalFile = file;
+    const fileURL = URL.createObjectURL(file);
+    
+    instPlayer.src = fileURL;
+    instPlayer.style.display = "block";
+    volumeBox.style.display = "block";
+    volumeMeter.style.display = "block";
+    
+    // Réinitialiser le volume
+    instPlayer.volume = parseFloat(volumeSlider.value);
+    
+    updateStatus('✅ Instrumental chargé avec succès ! Prêt à enregistrer', 'success');
+    startBtn.disabled = false;
+});
+
+// Ajustement du volume
+volumeSlider.addEventListener('input', function(e) {
+    const value = parseFloat(e.target.value);
+    instPlayer.volume = value;
+    if(beatGainNode){
+        beatGainNode.gain.value = value;
+    }
+});
+
+// Compte à rebours
+async function startCountdown(seconds){
+    for(let i = seconds; i > 0; i--){
+        countdownBox.style.display = 'block';
+        countdownBox.innerHTML = `<div class="countdown">${i}</div>`;
+        await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+    countdownBox.style.display = 'none';
+}
+
+// Démarrer le vu-mètre
+function startVolumeMeter(){
+    if(!analyser) return;
+    
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+    
+    function updateMeter(){
+        if(!analyser || !isRecording){
+            return;
+        }
+        
+        analyser.getByteFrequencyData(dataArray);
+        
+        let sum = 0;
+        for(let i = 0; i < dataArray.length; i++){
+            sum += dataArray[i];
+        }
+        let average = sum / dataArray.length;
+        let percentage = (average / 255) * 100;
+        
+        volumeFill.style.width = percentage + '%';
+        
+        animationId = requestAnimationFrame(updateMeter);
+    }
+    
+    updateMeter();
+}
+
+// Fonction principale d'enregistrement - CORRIGÉE
+async function startRecording() {
+    // Vérifications
+    if(!instPlayer.src || !currentInstrumentalFile){
+        updateStatus('⚠️ Chargez d\'abord un instrumental', 'error');
+        return;
+    }
+    
+    if(isRecording){
+        updateStatus('⚠️ Un enregistrement est déjà en cours', 'warning');
+        return;
+    }
+    
+    try {
+        updateStatus('🎙️ Préparation du studio...', 'info');
+        
+        // Compte à rebours
+        await startCountdown(3);
+        
+        // Réinitialisation
+        audioChunks = [];
+        
+        // Fermer l'ancien contexte si existant
+        if(audioCtx && audioCtx.state !== 'closed'){
+            await audioCtx.close();
+        }
+        
+        // Créer nouveau contexte audio
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Demander l'accès au microphone
+        const stream = await navigator.mediaDevices.getUserMedia({ 
+            audio: {
+                echoCancellation: true,
+                noiseSuppression: true,
+                autoGainControl: true
+            } 
+        });
+        
+        micStream = stream;
+        
+        // Créer les sources
+        const micSource = audioCtx.createMediaStreamSource(micStream);
+        const instrumentalSource = audioCtx.createMediaElementSource(instPlayer);
+        
+        // Créer le gain pour le beat
+        beatGainNode = audioCtx.createGain();
+        beatGainNode.gain.value = parseFloat(volumeSlider.value);
+        
+        // Créer le compresseur pour la voix
+        const compressor = audioCtx.createDynamicsCompressor();
+        compressor.threshold.setValueAtTime(-24, audioCtx.currentTime);
+        compressor.knee.setValueAtTime(30, audioCtx.currentTime);
+        compressor.ratio.setValueAtTime(12, audioCtx.currentTime);
+        compressor.attack.setValueAtTime(0.003, audioCtx.currentTime);
+        compressor.release.setValueAtTime(0.25, audioCtx.currentTime);
+        
+        // Analyser pour le vu-mètre
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 256;
+        
+        // Destination pour l'enregistrement
+        const destination = audioCtx.createMediaStreamDestination();
+        
+        // Connexions - CORRECTION IMPORTANTE
+        micSource.connect(compressor);
+        compressor.connect(analyser);
+        compressor.connect(destination);
+        compressor.connect(audioCtx.destination); // Pour entendre la voix
+        
+        instrumentalSource.connect(beatGainNode);
+        beatGainNode.connect(destination);
+        beatGainNode.connect(audioCtx.destination); // Pour entendre le beat
+        
+        // Démarrer le vu-mètre
+        startVolumeMeter();
+        
+        // Créer l'enregistreur
+        mediaRecorder = new MediaRecorder(destination.stream);
+        
+        mediaRecorder.ondataavailable = (event) => {
+            if(event.data.size > 0){
+                audioChunks.push(event.data);
+            }
+        };
+        
+        mediaRecorder.onstop = () => {
+            const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+            const audioURL = URL.createObjectURL(audioBlob);
+            
+            voicePreview.src = audioURL;
+            downloadLink.href = audioURL;
+            
+            resultBox.style.display = 'block';
+            updateStatus('✅ Morceau enregistré avec succès !', 'success');
+            
+            // Nettoyer le microphone
+            if(micStream){
+                micStream.getTracks().forEach(track => track.stop());
+                micStream = null;
+            }
+            
+            // Arrêter le vu-mètre
+            if(animationId){
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+            
+            isRecording = false;
+            
+            // Réinitialiser l'interface
+            startBtn.style.display = 'inline-block';
+            stopBtn.style.display = 'none';
+            resetBtn.style.display = 'inline-block';
+        };
+        
+        // Démarrer l'instrumental
+        instPlayer.currentTime = 0;
+        await instPlayer.play();
+        
+        // Démarrer l'enregistrement
+        mediaRecorder.start(100);
+        isRecording = true;
+        
+        // Mettre à jour l'interface
+        startBtn.style.display = 'none';
+        stopBtn.style.display = 'inline-block';
+        resetBtn.style.display = 'none';
+        
+        updateStatus('🎙️🔴 ENREGISTREMENT EN COURS - Chantez !', 'info');
+        
+        // Activer le contexte audio (nécessaire pour certains navigateurs)
+        if(audioCtx.state === 'suspended'){
+            await audioCtx.resume();
+        }
+        
+    } catch(error) {
+        console.error('Erreur détaillée:', error);
+        
+        let errorMessage = '❌ Erreur: ';
+        if(error.name === 'NotAllowedError'){
+            errorMessage += 'Vous devez autoriser l\'accès au microphone.';
+        } else if(error.name === 'NotFoundError'){
+            errorMessage += 'Aucun microphone trouvé.';
+        } else {
+            errorMessage += error.message;
+        }
+        
+        updateStatus(errorMessage, 'error');
+        startBtn.style.display = 'inline-block';
+        stopBtn.style.display = 'none';
+        
+        // Nettoyage en cas d'erreur
+        if(micStream){
+            micStream.getTracks().forEach(track => track.stop());
+            micStream = null;
+        }
+    }
+}
+
+// Arrêter l'enregistrement
+function stopRecording() {
+    if(mediaRecorder && mediaRecorder.state === 'recording'){
+        mediaRecorder.stop();
+        updateStatus('⏹️ Finalisation du morceau...', 'warning');
+    }
+    
+    if(instPlayer && !instPlayer.paused){
+        instPlayer.pause();
+    }
+}
+
+// Réinitialiser la session
+function resetSession() {
+    // Arrêter l'enregistrement si en cours
+    if(mediaRecorder && mediaRecorder.state === 'recording'){
+        mediaRecorder.stop();
+    }
+    
+    // Arrêter le microphone
+    if(micStream){
+        micStream.getTracks().forEach(track => track.stop());
+        micStream = null;
+    }
+    
+    // Fermer le contexte audio
+    if(audioCtx && audioCtx.state !== 'closed'){
+        audioCtx.close();
+        audioCtx = null;
+    }
+    
+    // Arrêter le vu-mètre
+    if(animationId){
+        cancelAnimationFrame(animationId);
+        animationId = null;
+    }
+    
+    // Réinitialiser les éléments
+    instPlayer.pause();
+    instPlayer.src = '';
+    instPlayer.style.display = 'none';
+    volumeBox.style.display = 'none';
+    volumeMeter.style.display = 'none';
+    resultBox.style.display = 'none';
+    beatUpload.value = '';
+    currentInstrumentalFile = null;
+    volumeFill.style.width = '0%';
+    
+    // Réinitialiser les boutons
+    startBtn.style.display = 'inline-block';
+    stopBtn.style.display = 'none';
+    resetBtn.style.display = 'none';
+    startBtn.disabled = true;
+    
+    isRecording = false;
+    
+    updateStatus('💿 Session réinitialisée. Chargez un nouvel instrumental.', 'warning');
+}
+
+// Événements des boutons
+startBtn.addEventListener('click', startRecording);
+stopBtn.addEventListener('click', stopRecording);
+resetBtn.addEventListener('click', resetSession);
+resetAfterSave.addEventListener('click', () => {
+    resetSession();
+    resultBox.style.display = 'none';
+});
+
+// Vérifier la compatibilité au chargement
+async function checkCompatibility() {
+    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+        updateStatus('❌ Votre navigateur ne supporte pas l\'enregistrement audio.', 'error');
+        startBtn.disabled = true;
+        return;
+    }
+    
+    try {
+        const testStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        testStream.getTracks().forEach(track => track.stop());
+        updateStatus('✅ Microphone disponible. Chargez un instrumental pour commencer.', 'success');
+    } catch(error) {
+        updateStatus('🎤 Autorisez le microphone dans les paramètres du navigateur', 'warning');
+    }
+}
+
+// Désactiver start au début
+startBtn.disabled = true;
+checkCompatibility();
+
+// Nettoyage à la fermeture
+window.addEventListener('beforeunload', function(e) {
+    if(isRecording){
+        e.preventDefault();
+        e.returnValue = 'Un enregistrement est en cours. Voulez-vous vraiment quitter ?';
+        return e.returnValue;
+    }
+});
+
+</script>
+</body>
+</html>
